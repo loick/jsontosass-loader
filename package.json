@@ -1,21 +1,16 @@
 {
   "name": "jsontosass-loader",
-  "version": "0.1.8",
+  "version": "0.0.1",
   "author": {
-    "name": "Edward Irby @edwardirby"
+    "name": "Loick Le Digabel"
   },
   "description": "jsonToSass loader module for webpack",
-  "files": [
-    "index.js"
-  ],
+  "files": ["index.js"],
   "dependencies": {
     "loader-utils": "~0.2.11"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/EdwardIrby/jsontosass-loader.git"
-  },
-  "bugs": {
-    "url": "https://github.com/EdwardIrby/jsontosass-loader.git/issues"
+    "url": "https://github.com/loick/jsontosass-loader"
   }
 }

@@ -1,54 +1,45 @@
 # json to sass loader for webpack
 
-### 0.1.8 Changes
-- **Flagged as cacheable**
-- **Simpler implementation** (See Example Config)
-- **Marked dependencies** (triggers build on webpack watch and webpack-dev-server when vars file is changed)
+Inspired (and forked) from github.com/EdwardIrby/jsontosass-loader
 
+## Changes
+- No path to give, just a json exported from the webpack config.
 
-### Installation
-
-`npm install jsontosass-loader --save-dev`
-
-## Usage
-
-[Documentation: Using loaders](http://webpack.github.io/docs/using-loaders.html)
-
-### Example config
-
-``` javascript
-var sassVars = 'path/to/your/vars.json';
-var webpackConfig = {
-    module: {
-        loaders:[
-            {test: /.scss$/, loader: "style!css!sass!jsontosass?path="+ sassVars}
-        ]
-    },
+In config.js :
+```javascript
+export const vars = {
+    colors : {
+        'red'   : '#FF0000',
+        'green' : '#00FF00',
+    }
+    grid : {
+        'nb-columns'      : 12,
+        // Mobile
+        'bk-xs'        : '0px',
+        'gutter-xs'    : '10px',
+        // Tablet
+        'bk-sm'        : '760px',
+        'gutter-sm'    : '10px',
+        // Desktop
+        'bk-md'        : '980px',
+        'gutter-md'    : '10px',
+        // TV
+        'bk-lg'        : '1380px',
+        'gutter-lg'    : '10px',
+    }
 }
 
+export default vars
 ```
 
-**Input [YourVars.json file]**
-``` json
-{
-"breakpoints":{
-    "portraitS": "320px",
-    "portraitM": "360px",
-    "portraitL": "414px",
-  },
-  "localNavHeight":"50px",
-}
+In the webpack conf :
+
+```javascript
+import variables from './config';
+`
+
+And :
+
+```javascript
+loader: ExtractTextPlugin.extract('style', 'css!sass!jsontosass?vars=' + encodeURIComponent(JSON.stringify(variables)))
 ```
-
-**Output SCSS**
-``` scss
-$breakpoints:(portraitS:320px,portraitM:360px,portraitL:414px);
-$localNavHeight:50px;
-```
-
-
-Forked from gist: [jsonToSassVars](https://gist.github.com/Kasu/ea4f4861a81e626ea308) and [prepend-loader](https://gist.github.com/Kasu/29452051023ff5337bd7)
-
-## License
-
-MIT (http://www.opensource.org/licenses/mit-license.php)
