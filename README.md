@@ -3,7 +3,7 @@
 Inspired (and forked) from github.com/EdwardIrby/jsontosass-loader
 
 ## Changes
-- No path to give, just a json exported from the webpack config.
+No path to give, just a json exported from the webpack config. Now we can have an exportable configuration we can use everywhere.
 
 In config.js :
 ```javascript
@@ -36,7 +36,7 @@ In the webpack conf :
 
 ```javascript
 import variables from './config';
-`
+```
 
 And :
 
